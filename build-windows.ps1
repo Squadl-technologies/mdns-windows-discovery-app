@@ -10,7 +10,8 @@ $repoRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
 Set-Location $repoRoot
 
 if ($Clean) {
-    Remove-Item -Recurse -Force -ErrorAction SilentlyContinue .\build, .\dist, .\*.spec
+    Remove-Item -Recurse -Force -ErrorAction SilentlyContinue .\build, .\dist
+    Remove-Item -Force -ErrorAction SilentlyContinue .\pyinstaller-build.out.log, .\pyinstaller-build.err.log
 }
 
 if (-not (Test-Path .\.venv)) {
