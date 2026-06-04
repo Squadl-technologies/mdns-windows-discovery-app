@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=77.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mdns-windows-discovery-app"
+version = "0.1.0"
+description = "Windows mDNS discovery command-line, service, and tray app"
+requires-python = ">=3.10"
+dependencies = [
+    "ifaddr>=0.1.7",
+    "zeroconf>=0.149.4",
+    "pillow>=10.0",
+    "pystray>=0.19.5",
+    "pywin32>=306; platform_system == 'Windows'",
+]
+
+[project.optional-dependencies]
+bundle = ["pyinstaller>=6.0"]
+
+[project.scripts]
+sq-discovery = "sq_discovery.cli:main"
+sq-discovery-service = "sq_discovery.service:main"
+sq-discovery-win-service = "sq_discovery.win_service:main"
+sq-discovery-tray = "sq_discovery.tray:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["sq_discovery*"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 110

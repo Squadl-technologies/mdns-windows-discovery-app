@@ -1,0 +1,1 @@
+"""SQ-Discovery package."""
